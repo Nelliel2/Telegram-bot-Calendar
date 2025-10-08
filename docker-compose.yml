@@ -3,7 +3,7 @@ version: '3.8'
 services:
   telegram-bot:
     build: .
-    container_name: vtelegram-calendar-bot
+    container_name: telegram-bot-calendar
     restart: unless-stopped
     volumes:
       - ./data:/data
