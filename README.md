@@ -1,9 +1,12 @@
-# Telegram-Bot-Calendar - Отслеживание событий телеграмм-канала ![Python](https://img.shields.io/badge/Python-3.8+-blue?style=flat-square&logo=python) ![python-telegram-bot](https://img.shields.io/badge/python--telegram--bot-22.5-2CA5E0?style=flat-square&logo=telegram) ![Status](https://img.shields.io/badge/Status-Inactive-red?style=flat-square)
+# Telegram-Bot-Calendar - Отслеживание событий телеграмм-канала ![Python](https://img.shields.io/badge/Python-3.9+-blue?style=flat-square&logo=python) ![python-telegram-bot](https://img.shields.io/badge/python--telegram--bot-22.5-2CA5E0?style=flat-square&logo=telegram) ![Status](https://img.shields.io/badge/Status-Inactive-red?style=flat-square) ![Docker Image](https://img.shields.io/badge/docker-available-2496ED?style=flat-square&logo=docker)
+
 
 Бот для управления событиями в Telegram-каналах с автоматическими уведомлениями и закреплением сообщений.
 
 🌐 **Бот в Telegram**: [@BingpupCalendarBot](https://t.me/BingpupCalendarBot)
 https://t.me/BingpupCalendarBot
+
+🐳 **Docker Image**: [midorima666/telegram-bot-calendar](https://hub.docker.com/r/midorima666/telegram-bot-calendar)
 
 ## 🚀 Функциональность
 
@@ -40,31 +43,21 @@ https://t.me/BingpupCalendarBot
 /checkperms - Проверить права бота в ваших каналах
 ```
 
-## 🛠️ Для разработчиков
 
-### Структура проекта
-```
-Telegram-bot-Calendar/
-├── handlers/ # Обработчики команд
-│ ├── channel_handlers.py
-│ └── event_handlers.py
-├── managers/ # Бизнес-логика
-│ ├── channel_manager.py
-│ └── event_manager.py
-├── services/ # Фоновые сервисы
-│ ├── notification_service.py
-│ └── scheduler.py
-├── utils/ # Вспомогательные утилиты
-│ ├── calendar.py
-│ ├── data_manager.py
-│ └── date_utils.py
-├── main.py # Точка входа
-├── config.py # Конфигурация
-├── requirements.txt # Зависимости
-└── README.md # Документация
+## 🐳 Быстрый запуск через Docker
+
+**Вариант 1:** Docker Hub
+```bash
+docker run -d --name telegram-calendar-bot -e BOT_TOKEN=your_bot_token_here -v bot_data:/app/data --restart unless-stopped midorima666/telegram-bot-calendar:latest
 ```
 
-### Установка и запуск
+**Вариант 2:** docker-compose
+```powershell
+"BOT_TOKEN=your_bot_token_here" | Out-File -FilePath .env -Encoding UTF8
+docker-compose up -d
+```
+
+## 🏠 Локальная разработка
 
 1. Клонируйте репозиторий:
 ```bash
@@ -77,7 +70,7 @@ cd Telegram-bot-Calendar
 pip install -r requirements.txt
 ```
 
-3. Создайте файл .env:
+3. Создайте файл .env c токеном бота:
 ```env
 BOT_TOKEN=your_bot_token_here
 ```
@@ -85,7 +78,35 @@ BOT_TOKEN=your_bot_token_here
 4. Запустите бота:
 ```bash
 python main.py
-```   
+```
+
+## 🏗️ Структура проекта
+```
+Telegram-bot-Calendar/
+├── .github/workflows/   # CI/CD пайплайны
+│   └── docker.yml       # Автоматическая сборка Docker
+├── handlers/            # Обработчики команд
+│ ├── channel_handlers.py
+│ └── event_handlers.py
+├── managers/            # Бизнес-логика
+│ ├── channel_manager.py
+│ └── event_manager.py
+├── services/            # Фоновые сервисы
+│ ├── notification_service.py
+│ └── scheduler.py
+├── utils/               # Вспомогательные утилиты
+│ ├── calendar.py
+│ ├── data_manager.py
+│ └── date_utils.py
+├── main.py              # Точка входа
+├── config.py            # Конфигурация
+├── docker-compose.yml   # Docker
+├── Dockerfile           # Docker сборка
+├── .dockerignore        # Исключения для Docker
+├── requirements.txt     # Зависимости
+└── README.md            # Документация
+```
+
 ## ⚠️ Текущий статус
 **Бот временно неактивен** - хостинг находится в процессе настройки. Код полностью рабочий и готов к развертыванию.
 
